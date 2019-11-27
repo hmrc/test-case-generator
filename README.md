@@ -4,7 +4,9 @@
 This application is designed to be used in conjunction with the MTR Tester spreadsheet that is provided by the business.
 The latest document can be found here: https://confluence.tools.tax.service.gov.uk/pages/viewpage.action?pageId=160893275
 
-The purpose of the application is to 
+The purpose of the application is to create three new sheets in the MTR tester workbook. These sheets point to various other
+parts of the spreadsheet to pull input, interim and output values that can subsequently be used to generate CSVs that can be used
+in the SA Filing application integration tests.
 
 Before executing the application download the latest MTR Tester from the page above. If you are not working on Windows 
 DO NOT open the spreadsheet file as it is likely to be corrupted if it is opened using Libre Office or any other non-Windows application.
