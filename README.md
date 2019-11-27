@@ -16,7 +16,7 @@ as it explains the process of preparing the MTR Tester spreadsheet prior to usin
 ### Usage
 
 The application expects two parameters, and input file which is the MTR tester and an output file name which is where the
-altered file will be saved.
+altered file will be saved. Currently the application expects the input file to exist in the resources folder and the output file will be written here as well.
 
 To run the application use:
 <pre>
