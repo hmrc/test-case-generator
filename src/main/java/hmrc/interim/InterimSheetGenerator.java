@@ -127,12 +127,12 @@ public class InterimSheetGenerator extends BaseSheetGenerator {
     }
 
     private boolean isStageSheet(String sheetName){
-        String pattern = "(.*)(\\((c\\d*)*\\))";
+        String pattern = "(.*)(\\(([c|C](\\d|[a-zA-Z])*)*\\))";
         return isMatch(sheetName, pattern);
     }
 
     private boolean isStageRef(String cellText){
-        String pattern = "^(c\\d*\\..*)$";
+        String pattern = "^(c(\\d|[a-zA-Z])*\\.[^\\s]*)$";
         return isMatch(cellText, pattern);
     }
 
