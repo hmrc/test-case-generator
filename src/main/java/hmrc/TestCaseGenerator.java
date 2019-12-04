@@ -3,6 +3,7 @@ package hmrc;
 import hmrc.input.InputSheetGenerator;
 import hmrc.interim.InterimSheetGenerator;
 import hmrc.output.OutputSheetGenerator;
+import hmrc.skip.TestsToRunGenerator;
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.openxml4j.opc.OPCPackage;
 import org.apache.poi.ss.usermodel.DataFormatter;
@@ -31,6 +32,7 @@ public class TestCaseGenerator {
         workbook = generateInputSheet(workbook);
         workbook = generateInterimSheet(workbook);
         workbook = generateOutputSheet(workbook);
+        workbook = showTestCasesToUse(workbook);
         saveWorkbook(workbook);
     }
 
@@ -47,6 +49,11 @@ public class TestCaseGenerator {
     private Workbook generateOutputSheet(Workbook workbook){
         SheetGenerator outputSheetGenerator = new OutputSheetGenerator(dataFormatter, workbook);
         return outputSheetGenerator.generate();
+    }
+
+    private Workbook showTestCasesToUse(Workbook workbook){
+        SheetGenerator skippedTestSheetGenerator = new TestsToRunGenerator(dataFormatter, workbook);
+        return skippedTestSheetGenerator.generate();
     }
 
     protected Workbook loadWorkBookFromFile(String fileName){

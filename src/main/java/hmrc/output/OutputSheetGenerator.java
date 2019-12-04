@@ -20,13 +20,7 @@ public class OutputSheetGenerator extends BaseSheetGenerator {
     public Workbook generate() {
         FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 
-        Sheet sheetToRemove = workbook.getSheet("TaxCalc_FinalOutput_JUNIT");
-        if(sheetToRemove != null)   {
-            int index = workbook.getSheetIndex(sheetToRemove);
-            workbook.removeSheetAt(index);
-        }
-
-        Sheet outputSheet = workbook.createSheet("TaxCalc_FinalOutput_JUNIT");
+        Sheet outputSheet = createSheet(workbook,"TaxCalc_FinalOutput_JUNIT");
 
         Sheet sa302InterfaceSheet = workbook.getSheet("IRCX_template");
 

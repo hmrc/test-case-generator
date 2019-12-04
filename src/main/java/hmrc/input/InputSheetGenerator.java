@@ -19,13 +19,7 @@ public class InputSheetGenerator extends BaseSheetGenerator  {
     @Override
     public Workbook generate() {
 
-        Sheet sheetToRemove = workbook.getSheet("TaxCalc_Input_JUNIT");
-        if(sheetToRemove != null)   {
-            int index = workbook.getSheetIndex(sheetToRemove);
-            workbook.removeSheetAt(index);
-        }
-
-        Sheet inputSheet = workbook.createSheet("TaxCalc_Input_JUNIT");
+        Sheet inputSheet = createSheet(workbook,"TaxCalc_Input_JUNIT");
 
         Sheet testCaseSheet = workbook.getSheet("Test case");
 

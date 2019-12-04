@@ -1,15 +1,22 @@
 package hmrc;
 
-import org.apache.poi.ss.usermodel.Cell;
-import org.apache.poi.ss.usermodel.CellType;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.*;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
 public abstract class BaseSheetGenerator implements SheetGenerator {
+
+    protected Sheet createSheet(Workbook workbook, String sheetName){
+        Sheet sheetToRemove = workbook.getSheet(sheetName);
+        if(sheetToRemove != null)   {
+            int index = workbook.getSheetIndex(sheetToRemove);
+            workbook.removeSheetAt(index);
+        }
+
+        return workbook.createSheet(sheetName);
+    }
 
     protected boolean generateNewSheetValues(Sheet sheet, Map<String, SheetAddress> dataMap, boolean first){
 

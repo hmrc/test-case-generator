@@ -22,13 +22,7 @@ public class InterimSheetGenerator extends BaseSheetGenerator {
     public Workbook generate(){
         FormulaEvaluator evaluator = workbook.getCreationHelper().createFormulaEvaluator();
 
-        Sheet sheetToRemove = workbook.getSheet("TaxCalc_Interim_JUNIT");
-        if(sheetToRemove != null)   {
-            int index = workbook.getSheetIndex(sheetToRemove);
-            workbook.removeSheetAt(index);
-        }
-
-        Sheet interimSheet = workbook.createSheet("TaxCalc_Interim_JUNIT");
+        Sheet interimSheet = createSheet(workbook,"TaxCalc_Interim_JUNIT");
 
         boolean first = true;
 
