@@ -3,6 +3,7 @@ package hmrc.output;
 import hmrc.BaseSheetGenerator;
 import hmrc.SheetAddress;
 import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFRichTextString;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -80,11 +81,21 @@ public class OutputSheetGenerator extends BaseSheetGenerator {
         return value.startsWith("Components:");
     }
 
+    private boolean isStrikeOut(Cell cell){
+        CellStyle cellStyle = cell.getCellStyle();
+        Font cellFont =  cell.getSheet().getWorkbook().getFontAt(cellStyle.getFontIndex());
+        Boolean strikeout = cellFont.getStrikeout();
+        if(strikeout){
+            print(cell.toString() + " at: " + cell.getAddress() + " has been crossed out!");
+        }
+        return strikeout;
+    }
+
     private String getCellValue(Row row, int columnIndex, FormulaEvaluator evaluator){
         Cell cell = row.getCell(columnIndex);
         CellValue cellValue = evaluator.evaluate(cell);
 
-        if(cellValue == null)
+        if(cellValue == null || isStrikeOut(cell))
             return "";
 
         return cellValue.getStringValue();

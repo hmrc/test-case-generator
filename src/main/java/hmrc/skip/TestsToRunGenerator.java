@@ -33,7 +33,7 @@ public class TestsToRunGenerator extends BaseSheetGenerator {
                    String testCaseNumber = dataFormatter.formatCellValue(testCaseCell);
                    String isUsed = dataFormatter.formatCellValue(testCaseIsUsedCell);
 
-                   if(isUsed.equalsIgnoreCase("YES")){
+                   if(isUsed.equalsIgnoreCase("NO")){
                        testCases.add(testCaseNumber);
                    }
                }
