@@ -32,7 +32,7 @@ public class TestCaseGenerator {
         workbook = generateInputSheet(workbook);
         workbook = generateInterimSheet(workbook);
         workbook = generateOutputSheet(workbook);
-        workbook = showTestCasesToUse(workbook);
+        workbook = showTestCasesToExclude(workbook);
         saveWorkbook(workbook);
     }
 
@@ -51,7 +51,7 @@ public class TestCaseGenerator {
         return outputSheetGenerator.generate();
     }
 
-    private Workbook showTestCasesToUse(Workbook workbook){
+    private Workbook showTestCasesToExclude(Workbook workbook){
         SheetGenerator skippedTestSheetGenerator = new TestsToRunGenerator(dataFormatter, workbook);
         return skippedTestSheetGenerator.generate();
     }
