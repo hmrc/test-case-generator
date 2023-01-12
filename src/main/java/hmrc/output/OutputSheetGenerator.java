@@ -32,7 +32,7 @@ public class OutputSheetGenerator extends BaseSheetGenerator {
             Map<String, SheetAddress> outputMap = new HashMap<>();
 
             int[] lineColumns = {1, 6};
-            int maxRowNumber = 100;
+            int maxRowNumber = 109;
 
             for(int columnIndex: lineColumns) {
 
